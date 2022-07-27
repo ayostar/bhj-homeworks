@@ -5,6 +5,8 @@ class Game {
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
 
+    this.timerElement = container.querySelector('.status__timer')
+
     this.reset();
 
     this.registerEvents();
@@ -17,13 +19,11 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    window.addEventListener('keyup', (keyboard_event) => {
+    const keyDown = keyboard_event.key.toLowerCase()
+    const currentSymbol = this.currentSymbol.textContent.toLowerCase()
+    keyDown = currentSymbol ? this.success() : this.fail()
+  })
   }
 
   success() {
@@ -48,10 +48,25 @@ class Game {
     this.setNewWord();
   }
 
-  setNewWord() {
-    const word = this.getWord();
+  setTime(numSeconds) {
+    this.timerElement.textContent = numSeconds
 
-    this.renderWord(word);
+    let newRound = this
+    
+    this.timerId = setInterval(function() { // setInterval позволяет вызывать функцию регулярно, повторяя вызов через определённый интервал времени.
+      if (--newRound.timerElement.textContent == 0) {
+        newRound.fail();
+      } 
+    }, 1000)  
+  }
+
+  setNewWord() {
+    clearTimeout(this.timerId)
+
+    const word = this.getWord()
+
+    this.renderWord(word)
+    this.setTime(word.length)
   }
 
   getWord() {
