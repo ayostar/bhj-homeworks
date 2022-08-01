@@ -22,7 +22,7 @@ class Game {
     window.addEventListener('keyup', (keyboard_event) => {
     const keyDown = keyboard_event.key.toLowerCase()
     const currentSymbol = this.currentSymbol.textContent.toLowerCase()
-    keyDown = currentSymbol ? this.success() : this.fail()
+    keyDown == currentSymbol ? this.success() : this.fail()
   })
   }
 
