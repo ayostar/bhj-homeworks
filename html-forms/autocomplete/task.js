@@ -81,12 +81,23 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
+
+    const allInputs = Array.from(this.input.options)
+    console.log(text)
+    
+    let textMatches = []
+
+    allInputs.forEach((option) => {
+      if (option.text.includes(text)) {
+        console.log(option.text)
+        textMatches.push({
+          text: option.text,
+          value: option.value
+        })
       }
-    ];
+    })
+
+    return textMatches
   }
 }
 
