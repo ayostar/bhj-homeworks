@@ -1,6 +1,15 @@
 body {
   font-family: Arial;
 }
+
+.cart {
+  display: none;
+}
+
+.cart_active {
+  display: flex;
+}
+
 .cart__products {
   display: flex;
   justify-content: center;
@@ -83,6 +92,19 @@ body {
 }
 
 .product__add:hover {
+  opacity: 0.8;
+}
+
+.product__remove {
+  background: red;
+  margin-top: 2px;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product__remove:hover {
   opacity: 0.8;
 }
 
