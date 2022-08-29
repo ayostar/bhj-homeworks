@@ -9,3 +9,42 @@ body {
 .poll__title {
   margin-bottom: 20px;
 }
+
+.poll__alert {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 50%;
+  z-index: 10;
+}
+
+.poll__alert div {
+  width: 350px;
+  height: 60px;
+  background-color: rgb(236, 232, 232);
+  border-radius: 10px;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 3px solid #cccccc;
+  position: absolute;
+  left: 60%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+
+}
+
+.poll__alert div a {
+  float: right
+}
+
+.poll__result_title {
+  display: inline-block;
+}
+
+.poll__result_value {
+  display: inline-block;
+  font-weight: bold;
+}
